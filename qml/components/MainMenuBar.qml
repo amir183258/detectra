@@ -3,38 +3,32 @@ import QtQuick.Controls
 import QtQuick.Dialogs
 
 MenuBar {
-	signal openImage(url file)
-
-	FileDialog {
-		id: openDialogId
-		title: "Open Image"
-		nameFilters: ["Images (*.png *.jpg *.jpeg *.bmp)"]
-
-		onAccepted: function() {
-			openImage(selectedFile)
-		}
-	}
+	property var imageActions
+	signal resetViewRequested()
 
 	Menu {
 		title: "File"
 
 		MenuItem {
-			text: "Open"
-			onTriggered: function() {
-				openDialogId.open()
-			}
+			action: imageActions.openImageAction
 		}
 
-		MenuItem { text: "Save" }
-		MenuItem { text: "Save As..." }
+		MenuItem {
+			text: "Save Bounding Boxes"
+		}
+
 		MenuSeparator {}
+
 		MenuItem { text: "Exit"; onTriggered: Qt.quit() }
 	}
 
 	Menu {
 		title: "Edit"
 
-		MenuItem { text: "Undo" }
+		MenuItem {
+			action: imageActions.resetViewAction
+		}
+
 		MenuItem { text: "Redo" }
 		MenuSeparator {}
 		MenuItem { text: "Cut" }
