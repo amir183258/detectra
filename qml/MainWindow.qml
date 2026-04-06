@@ -25,13 +25,19 @@ ApplicationWindow {
 		y = (screen.height - height) / 2
 	}
 
-	menuBar: MainMenuBar {
-		onOpenImage: function(file) {
-			centerViewerId.imageSource = file
-			
-		}
+	/* image actions */
+	ImageActions {
+		id: imageActionsId
+		imageViewer: centerViewerId
 	}
-	header: MainToolBar {}
+
+	menuBar: MainMenuBar {
+		imageActions: imageActionsId
+	}
+
+	header: MainToolBar {
+		imageActions: imageActionsId
+	}
 
 	ColumnLayout {
 		anchors.fill: parent
@@ -47,6 +53,8 @@ ApplicationWindow {
 			RightPanel {}
 		}
 
-		BottomPanel {}
+		BottomPanel {
+			imageViewer: centerViewerId
+		}
 	}
 }
