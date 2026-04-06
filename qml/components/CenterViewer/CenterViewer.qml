@@ -5,6 +5,15 @@ import QtQuick.Dialogs
 
 Frame {
 	property alias imageSource: imageViewerId.source
+	property alias imageWidth: imageViewerId.sourceSize.width
+	property alias imageHeight: imageViewerId.sourceSize.height
+	property string imageFileName: {
+		if (imageViewerId.status !== Image.Ready)
+			return "No Image"
+
+		var path = imageSource.toString()
+		return path.split("/").pop()
+	}
 
 	Layout.fillWidth: true
 	Layout.fillHeight: true
@@ -19,6 +28,16 @@ Frame {
 
 	property real startX: 0
 	property real startY: 0
+
+	function resetView() {
+		zoom = 1.0
+
+		offsetX = 0
+		offsetY = 0
+
+		startX = 0
+		startY = 0
+	}
 
 	Image {
 		id: imageViewerId
@@ -41,6 +60,7 @@ Frame {
 
 	MouseArea {
 		anchors.fill: parent
+		propagateComposedEvents: true
 		cursorShape: {
 			if (imageViewerId.status === Image.Ready && panHandlerId.active)
 				return Qt.ClosedHandCursor
