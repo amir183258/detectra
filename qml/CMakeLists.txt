@@ -20,4 +20,5 @@ qt_add_qml_module(${LIB_NAME}
 		components/CenterViewer/CenterViewer.qml
 		components/CenterViewer/ImageDropArea.qml
 		components/CenterViewer/PlaceholderText.qml
+		components/CenterViewer/ImageActions.qml
 )
