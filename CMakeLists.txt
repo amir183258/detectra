@@ -15,7 +15,7 @@ find_package(GTest REQUIRED)
 # Qt6
 set(CMAKE_PREFIX_PATH "$ENV{HOME}/Qt/6.10.1/gcc_64")
 
-find_package(Qt6 COMPONENTS Quick QuickControls2 REQUIRED)
+find_package(Qt6 COMPONENTS Quick QuickControls2 QuickTest REQUIRED)
 
 qt_standard_project_setup()
 
@@ -24,3 +24,4 @@ qt_policy(SET QTP0004 NEW)
 
 add_subdirectory(qml/)
 add_subdirectory(app/)
+add_subdirectory(tests/)
