@@ -28,6 +28,8 @@ ApplicationWindow {
 	/* image actions */
 	ImageActions {
 		id: imageActionsId
+		objectName: "imageActionsObject"
+
 		imageViewer: centerViewerId
 	}
 
@@ -47,13 +49,18 @@ ApplicationWindow {
 			Layout.fillHeight: true
 
 			LeftPanel {}
+
 			CenterViewer {
 				id: centerViewerId
+				objectName: "centerViewerObject"
 			}
+
 			RightPanel {}
 		}
 
 		BottomPanel {
+			objectName: "bottomPanelObject"
+
 			imageViewer: centerViewerId
 		}
 	}
