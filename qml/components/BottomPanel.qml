@@ -27,14 +27,17 @@ Frame {
 			Layout.alignment: Qt.AlignRight | Qt.AlignVCenter
 
 			Label {
-				text: "Name: " + imageViewer.imageFileName
+				objectName: "fileNameLabelObject"
+				text: "Name: " + (imageViewer ? imageViewer.imageFileName : "")
 			}
 
 			Label {
-				text: "Size: " + imageViewer.imageWidth + ", " + imageViewer.imageHeight
+				objectName: "imageSizeLabelObject"
+				text: "Size: " + (imageViewer ? imageViewer.imageWidth + ", " + imageViewer.imageHeight : "")
 			}
 
 			Label {
+				objectName: "mousePositionLabelObject"
 				text: "Mouse: test"
 			}
 		}
