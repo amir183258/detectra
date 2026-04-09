@@ -3,7 +3,12 @@ import QtQuick.Controls
 import QtQuick.Layouts
 
 Frame {
-	property CenterViewer imageViewer
+	/* for showing image name */
+	property string imageFileName
+
+	/* for showing image dimensions */
+	property int imageWidth
+	property int imageHeight
 
 	Layout.fillWidth: true
 	Layout.preferredHeight: 40
@@ -28,12 +33,12 @@ Frame {
 
 			Label {
 				objectName: "fileNameLabelObject"
-				text: "Name: " + (imageViewer ? imageViewer.imageFileName : "")
+				text: "Name: " + (imageFileName ? imageFileName : "No Image")
 			}
 
 			Label {
 				objectName: "imageSizeLabelObject"
-				text: "Size: " + (imageViewer ? imageViewer.imageWidth + ", " + imageViewer.imageHeight : "")
+				text: "Size: " + (imageWidth && imageHeight ? imageWidth + ", " + imageHeight : "No Image")
 			}
 
 			Label {

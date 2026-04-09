@@ -61,7 +61,10 @@ ApplicationWindow {
 		BottomPanel {
 			objectName: "bottomPanelObject"
 
-			imageViewer: centerViewerId
+			imageFileName: centerViewerId.imageFileName
+
+			imageWidth: centerViewerId.imageWidth
+			imageHeight: centerViewerId.imageHeight
 		}
 	}
 }
