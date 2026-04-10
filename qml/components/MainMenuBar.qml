@@ -28,12 +28,6 @@ MenuBar {
 		MenuItem {
 			action: imageActions.resetViewAction
 		}
-
-		MenuItem { text: "Redo" }
-		MenuSeparator {}
-		MenuItem { text: "Cut" }
-		MenuItem { text: "Copy" }
-		MenuItem { text: "Paste" }
 	}
 
 	font.pixelSize: 12
