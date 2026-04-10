@@ -9,6 +9,12 @@ qt_add_qml_module(qml_tests
 	QML_FILES
 		tst_MainWindow.qml
 		tst_BottomPanel.qml
+		tst_MainMenuBar.qml
+		tst_MainToolBar.qml
+		CenterViewer/tst_PlaceholderText.qml
+		CenterViewer/tst_ImageDropArea.qml
+		CenterViewer/tst_ImageActions.qml
+		CenterViewer/tst_CenterViewer.qml
 )
 
 target_link_libraries(qml_tests PRIVATE DetectorUILibplugin)

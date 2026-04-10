@@ -3,7 +3,7 @@ import QtTest
 import DetectorUI
 
 TestCase {
-	name: "MainWindowTest"
+	name: "MainWindowTests"
 
 	Component {
 		id: windowComponent
@@ -64,6 +64,8 @@ TestCase {
 		var viewer = findChild(window, "centerViewerObject")
 		var actions = findChild(window, "bottomPanelObject")
 
-		compare(actions.imageViewer, viewer)
+		compare(actions.imageFileName, viewer.imageFileName)
+		compare(actions.imageWidth, viewer.imageWidth)
+		compare(actions.imageHeight, viewer.imageHeight)
 	}
 }
