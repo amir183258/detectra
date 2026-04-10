@@ -3,7 +3,7 @@ import QtQuick.Controls
 import QtQuick.Layouts
 
 Text {
-	property int imageStatus
+	property int imageStatus: Image.Null
 	property bool dragActive: false
 
 	anchors.centerIn: parent
