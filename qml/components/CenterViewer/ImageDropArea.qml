@@ -5,6 +5,10 @@ import QtQuick.Dialogs
 Item {
 	property bool dragActive: dropAreaId.containsDrag
 
+	/* for test */
+	property alias dropArea: dropAreaId
+	property alias errorDialog: errorDialogId
+
 	signal imageDropped(url fileUrl)
 
 	/* message dialog for invalid files in drop area */
