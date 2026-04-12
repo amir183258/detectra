@@ -15,6 +15,8 @@ Item {
 
 	FileDialog {
 		id: openDialogId
+		objectName: "openDialogObject"
+
 		title: "Open Image"
 		nameFilters: ["Images (*.png *.jpg *.jpeg *.bmp)"]
 
