@@ -10,6 +10,10 @@ Frame {
 	property int imageWidth
 	property int imageHeight
 
+	/* for showing mouse position */
+	property real mouseX: -1
+	property real mouseY: -1
+
 	Layout.fillWidth: true
 	Layout.preferredHeight: 40
 
@@ -33,17 +37,18 @@ Frame {
 
 			Label {
 				objectName: "fileNameLabelObject"
-				text: "Name: " + (imageFileName ? imageFileName : "No Image")
+				text: "Name: " + (imageFileName ? imageFileName : "-")
 			}
 
 			Label {
 				objectName: "imageSizeLabelObject"
-				text: "Size: " + (imageWidth && imageHeight ? imageWidth + ", " + imageHeight : "No Image")
+				text: "Size: " + (imageWidth && imageHeight ? imageWidth + ", " + imageHeight : "-")
 			}
 
 			Label {
 				objectName: "mousePositionLabelObject"
-				text: "Mouse: test"
+				text: mouseX >= 0 && mouseY >= 0 ? "Mouse: " + Math.round(mouseX) + ", " + Math.round(mouseY) :
+					"Mouse: -"
 			}
 		}
 	}

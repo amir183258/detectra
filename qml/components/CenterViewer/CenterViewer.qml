@@ -15,6 +15,9 @@ Frame {
 		return path.split("/").pop()
 	}
 
+	/* signal for mouse position and movement */
+	signal mouseMoved(real x, real y)
+
 	Layout.fillWidth: true
 	Layout.fillHeight: true
 
@@ -39,10 +42,35 @@ Frame {
 		startY = 0
 	}
 
+	/* this function takes coordinates of screen and converts them to
+	 * the loaded image coordinate system. */
+	function screenToImage(x, y) {
+		if (imageViewerId.status !== Image.Ready)
+			return null
+
+		/* these are actual image width and height */
+		let actualImageWidth = imageViewerId.paintedWidth
+		let actualImageHeight = imageViewerId.paintedHeight
+
+		/* these are image width and height after applying zoom */
+		let scaledWidth = actualImageWidth * zoom
+		let scaledHeight = actualImageHeight * zoom
+
+		/* the origin is top left corner of image */
+		let x0 = (mouseAreaId.width - scaledWidth) / 2
+		let y0 = (mouseAreaId.height - scaledHeight) / 2
+
+		/* final image coordinages */
+		let imgX = (x - x0 - offsetX) / zoom
+		let imgY = (y - y0 - offsetY) / zoom
+
+		return {x: imgX, y: imgY }
+	}
+
 	Image {
 		id: imageViewerId
 		anchors.fill: parent
-		fillMode: Image.PreserveAspectFit
+		fillMode: Image.Pad
 
 		transform: [
 			Scale {
@@ -59,13 +87,30 @@ Frame {
 	}
 
 	MouseArea {
+		id: mouseAreaId
 		anchors.fill: parent
+		hoverEnabled: true
 		propagateComposedEvents: true
+
 		cursorShape: {
 			if (imageViewerId.status === Image.Ready && panHandlerId.active)
 				return Qt.ClosedHandCursor
 
 			return Qt.ArrowCursor
+		}
+
+		onPositionChanged: function(mouse) {
+			let p = screenToImage(mouse.x, mouse.y)
+			if (!p)
+				return
+
+			/* these are actual image width and height */
+			let actualImageWidth = imageViewerId.paintedWidth
+			let actualImageHeight = imageViewerId.paintedHeight
+			if (p.x < 0 || p.y < 0 || p.x > actualImageWidth || p.y > actualImageHeight)
+				return
+
+			mouseMoved(p.x, p.y)
 		}
 	}
 

@@ -53,12 +53,18 @@ ApplicationWindow {
 			CenterViewer {
 				id: centerViewerId
 				objectName: "centerViewerObject"
+
+				onMouseMoved: function(x, y) {
+					bottomPanelId.mouseX = x
+					bottomPanelId.mouseY = y
+				}
 			}
 
 			RightPanel {}
 		}
 
 		BottomPanel {
+			id: bottomPanelId
 			objectName: "bottomPanelObject"
 
 			imageFileName: centerViewerId.imageFileName
