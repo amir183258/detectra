@@ -6,6 +6,7 @@
 #include <QVector>
 
 #include "core/detector_box.hpp"
+#include "core/model_info.hpp"
 
 class ObjectDetector {
 private:
@@ -19,6 +20,8 @@ public:
 	virtual QVector<DetectorBox> run(const QImage &image) = 0;
 
 	virtual bool is_ready() const = 0;
+
+	virtual ModelInfo model_info() const = 0;
 
 };
 
