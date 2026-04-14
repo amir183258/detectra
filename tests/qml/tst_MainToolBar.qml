@@ -4,7 +4,7 @@ import QtTest
 import DetectorUI
 
 TestCase {
-	name: "toolBarTests"
+	name: "MainToolBarTests"
 
 	Component {
 		id: comp
@@ -17,6 +17,7 @@ TestCase {
 		Item {
 			property bool openCalled: false
 			property bool resetCalled: false
+			property bool loadModelCalled: false
 
 			Action {
 				id: openAct
@@ -28,8 +29,14 @@ TestCase {
 				onTriggered: resetCalled = true
 			}
 
+			Action {
+				id: loadModelAct
+				onTriggered: loadModelCalled = true
+			}
+
 			property alias openImageAction: openAct
 			property alias resetViewAction: resetAct
+			property alias loadDetectorModelAction: resetAct
 		}
 	}
 
@@ -44,7 +51,8 @@ TestCase {
 		let fake = fakeActionsComp.createObject(root)
 
 		let bar = comp.createObject(root, {
-			imageActions: fake
+			imageActions: fake,
+			detectionActions: fake
 		})
 
 		verify(bar !== null)
@@ -57,6 +65,6 @@ TestCase {
 
 		let layout = bar.contentChildren[0]
 
-		compare(layout.children.length, 3) /* currently we have 3 buttons */
+		compare(layout.children.length, 4) /* currently we have 3 buttons */
 	}
 }

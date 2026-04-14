@@ -3,7 +3,7 @@ import QtTest
 import DetectorUI
 
 TestCase {
-	name: "centerViewerTests"
+	name: "CenterViewerTests"
 
 	Component {
 		id: comp

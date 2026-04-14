@@ -3,7 +3,7 @@ import QtTest
 import DetectorUI
 
 TestCase {
-	name: "imageActionsTests"
+	name: "ImageActionsTests"
 
 	Component {
 		id: comp
@@ -21,7 +21,9 @@ TestCase {
 		id: fakeViewerComp
 
 		Item {
+			property var imageStatus: Image.Ready
 			property var imageSource: ""
+
 			function resetView() {
 				resetCalled = true
 			}

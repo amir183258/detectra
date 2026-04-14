@@ -3,7 +3,7 @@ import QtTest
 import DetectorUI
 
 TestCase {
-	name: "imageDropAreaTests"
+	name: "ImageDropAreaTests"
 
 	Component {
 		id: testComp

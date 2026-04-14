@@ -4,7 +4,7 @@ import QtTest
 import DetectorUI
 
 TestCase {
-	name: "menuBarTests"
+	name: "MainMenuBarTests"
 
 	Component {
 		id: comp
