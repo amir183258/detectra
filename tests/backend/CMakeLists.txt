@@ -1,6 +1,7 @@
 add_executable(tests_backend
 	core/test_detector_box.cpp
 	core/test_object_detector.cpp
+	core/test_model_info.cpp
 )
 
 target_include_directories(tests_backend
