@@ -17,6 +17,7 @@ qt_add_qml_module(${LIB_NAME}
 		components/LeftPanel.qml
 		components/RightPanel.qml
 		components/BottomPanel.qml
+		components/DetectionActions.qml
 		components/CenterViewer/CenterViewer.qml
 		components/CenterViewer/ImageDropArea.qml
 		components/CenterViewer/PlaceholderText.qml
