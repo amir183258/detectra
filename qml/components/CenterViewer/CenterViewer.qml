@@ -7,6 +7,8 @@ Frame {
 	property alias imageSource: imageViewerId.source
 	property alias imageWidth: imageViewerId.sourceSize.width
 	property alias imageHeight: imageViewerId.sourceSize.height
+	property alias imageStatus: imageViewerId.status
+
 	property string imageFileName: {
 		if (imageViewerId.status !== Image.Ready)
 			return "No Image"
