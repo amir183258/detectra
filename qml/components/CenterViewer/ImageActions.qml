@@ -3,6 +3,11 @@ import QtQuick.Controls
 import QtQuick.Dialogs
 
 Item {
+	/* actions */
+	property alias openImageAction: openImageId
+	property alias resetViewAction: resetViewId
+
+	/* image viewer property */
 	property var imageViewer
 
 	/* action for opening image */
@@ -29,12 +34,11 @@ Item {
 	Action {
 		id: resetViewId
 		text: "Reset View"
+		enabled: imageViewer && imageViewer.imageStatus === Image.Ready
 
 		onTriggered: {
 			imageViewer.resetView()
 		}
 	}
 
-	property alias openImageAction: openImageId
-	property alias resetViewAction: resetViewId
 }
