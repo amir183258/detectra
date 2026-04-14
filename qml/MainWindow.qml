@@ -33,12 +33,19 @@ ApplicationWindow {
 		imageViewer: centerViewerId
 	}
 
+	/* detection actions */
+	DetectionActions {
+		id: detectionActionsId
+	}
+
 	menuBar: MainMenuBar {
 		imageActions: imageActionsId
+		detectionActions: detectionActionsId
 	}
 
 	header: MainToolBar {
 		imageActions: imageActionsId
+		detectionActions: detectionActionsId
 	}
 
 	ColumnLayout {
@@ -60,7 +67,8 @@ ApplicationWindow {
 				}
 			}
 
-			RightPanel {}
+			/* don't need right panel right now */
+			/* RightPanel {} */
 		}
 
 		BottomPanel {

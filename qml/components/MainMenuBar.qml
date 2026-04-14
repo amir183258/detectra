@@ -4,6 +4,8 @@ import QtQuick.Dialogs
 
 MenuBar {
 	property var imageActions
+	property var detectionActions
+
 	signal resetViewRequested()
 
 	Menu {
@@ -30,5 +32,12 @@ MenuBar {
 		}
 	}
 
-	font.pixelSize: 12
+	/* load a detection model */
+	Menu {
+		title: "Tools"
+
+		MenuItem {
+			action: detectionActions.loadDetectorModelAction
+		}
+	}
 }
