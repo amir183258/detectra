@@ -11,6 +11,7 @@ qt_add_qml_module(qml_tests
 		tst_BottomPanel.qml
 		tst_MainMenuBar.qml
 		tst_MainToolBar.qml
+		tst_DetectionActions.qml
 		CenterViewer/tst_PlaceholderText.qml
 		CenterViewer/tst_ImageDropArea.qml
 		CenterViewer/tst_ImageActions.qml
