@@ -6,6 +6,7 @@
 #include <QRectF>
 
 #include "core/object_detector.hpp"
+#include "core/model_info.hpp"
 
 /* include mock class */
 #include "mock_object_detector.hpp"
@@ -43,4 +44,24 @@ TEST(ObjectDetectorTest, RunReturnBoxes) {
 	EXPECT_EQ(box.confidence, 0.95f);
 
 	EXPECT_EQ(box.box_rect, QRectF(50, 50, 200, 400));
+}
+
+TEST(ObjectDetectorTest, ModelInformation) {
+	std::unique_ptr<ObjectDetector> detector = 
+		std::make_unique<MockObjectDetector>();
+
+	detector->load_model("dummy");
+
+	ModelInfo info = detector->model_info();
+
+	EXPECT_EQ(info.model_name, "Mock Detector");
+	EXPECT_EQ(info.format, "Mock Format");
+	EXPECT_EQ(info.file_path, "dummy");
+	EXPECT_EQ(info.file_size, 123456);
+	EXPECT_EQ(info.input_width, 640);
+	EXPECT_EQ(info.input_height, 640);
+	EXPECT_EQ(info.num_classes, 2);
+
+	EXPECT_EQ(info.class_names[0], "person");
+	EXPECT_EQ(info.class_names[1], "car");
 }
