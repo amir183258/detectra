@@ -7,15 +7,30 @@
 
 #include "core/object_detector.hpp"
 #include "core/detector_box.hpp"
+#include "core/model_info.hpp"
 
 class MockObjectDetector: public ObjectDetector {
 private:
 	bool ready = false;
+	ModelInfo info;
+
 
 public:
 	bool load_model(const QString &model_path) override {
 		Q_UNUSED(model_path);
+
+		/* fill ModelInfo structure */
+		info.model_name = "Mock Detector";
+		info.format = "Mock Format";
+		info.file_path = model_path;
+		info.file_size = 123456;
+		info.input_width = 640;
+		info.input_height = 640;
+		info.num_classes = 2;
+		info.class_names = {"person", "car"};
+
 		ready = true;
+
 		return true;
 	}
 
@@ -47,6 +62,10 @@ public:
 
 	bool is_ready() const {
 		return ready;
+	}
+
+	ModelInfo model_info() const override {
+		return info;
 	}
 };
 
