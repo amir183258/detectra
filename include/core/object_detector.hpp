@@ -12,7 +12,7 @@ class ObjectDetector {
 private:
 
 public:
-	/* virtual destructor is necessary */
+	// virtual destructor is necessary
 	virtual ~ObjectDetector() = default;
 
 	virtual bool load_model(const QString &model_path) = 0;

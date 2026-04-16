@@ -3,14 +3,14 @@ import QtQuick.Controls
 import QtQuick.Dialogs
 
 Item {
-	/* actions */
+	// actions
 	property alias openImageAction: openImageId
 	property alias resetViewAction: resetViewId
 
-	/* image viewer property */
+	// image viewer property
 	property var imageViewer
 
-	/* action for opening image */
+	// action for opening image
 	Action {
 		id: openImageId
 		text: "Open Image"
@@ -30,7 +30,7 @@ Item {
 		}
 	}
 
-	/* action for setting zoom and pan to default values */
+	// action for setting zoom and pan to default values
 	Action {
 		id: resetViewId
 		text: "Reset View"

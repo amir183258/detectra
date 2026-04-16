@@ -9,23 +9,23 @@ ApplicationWindow {
 
 	title: "Detector"
 
-	/* window size */
+	// window size
 	width: 1280
 	height: 720
 
 	visibility: Window.Maximized
 	visible: true
 
-	/* set font size */
+	// set font size
 	font.pointSize: 11
 
-	/* set position center */
+	// set position center
 	Component.onCompleted: {
 		x = (screen.width - width) / 2
 		y = (screen.height - height) / 2
 	}
 
-	/* image actions */
+	// image actions
 	ImageActions {
 		id: imageActionsId
 		objectName: "imageActionsObject"
@@ -33,7 +33,7 @@ ApplicationWindow {
 		imageViewer: centerViewerId
 	}
 
-	/* detection actions */
+	// detection actions
 	DetectionActions {
 		id: detectionActionsId
 	}
@@ -67,8 +67,8 @@ ApplicationWindow {
 				}
 			}
 
-			/* don't need right panel right now */
-			/* RightPanel {} */
+			// don't need right panel right now
+			// RightPanel {}
 		}
 
 		BottomPanel {

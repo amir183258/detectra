@@ -32,7 +32,7 @@ MenuBar {
 		}
 	}
 
-	/* load a detection model */
+	// load a detection model
 	Menu {
 		title: "Tools"
 

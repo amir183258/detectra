@@ -5,19 +5,19 @@ import QtQuick.Dialogs
 Item {
 	property bool dragActive: dropAreaId.containsDrag
 
-	/* for test */
+	// for test
 	property alias dropArea: dropAreaId
 	property alias errorDialog: errorDialogId
 
 	signal imageDropped(url fileUrl)
 
-	/* message dialog for invalid files in drop area */
+	// message dialog for invalid files in drop area
 	MessageDialog {
 		id: errorDialogId
 		title: "Invalid File"
 	}
 
-	/* function that check if file is image or not */
+	// function that check if file is image or not
 	function isImageFile(url) {
 		let path = url.toString().toLowerCase()
 		return  path.endsWith(".png") ||
@@ -27,7 +27,7 @@ Item {
 			path.endsWith(".jpeg")
 	}
 
-	/* drop area for opening an image */
+	// drop area for opening an image
 	DropArea {
 		id: dropAreaId
 		anchors.fill: parent
@@ -54,7 +54,7 @@ Item {
 			drop.acceptProposedAction()
 		}
 
-		/* for showing dropping an item */
+		// for showing dropping an item
 		Rectangle {
 			anchors.fill: parent
 			color: "transparent"

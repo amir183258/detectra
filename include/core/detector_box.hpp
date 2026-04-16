@@ -13,7 +13,7 @@ struct DetectorBox {
 	QString box_description;
 	QColor color;
 
-	/* default constructor */
+	// default constructor
 	DetectorBox():
 		class_id {-1},
 		confidence {0},
@@ -22,7 +22,7 @@ struct DetectorBox {
 	{
 	}
 
-	/* a constructor to be filled */
+	// a constructor to be filled
 	DetectorBox(int class_id,
 			const QString &label,
 			float confidence,

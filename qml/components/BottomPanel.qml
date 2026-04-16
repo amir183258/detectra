@@ -3,14 +3,14 @@ import QtQuick.Controls
 import QtQuick.Layouts
 
 Frame {
-	/* for showing image name */
+	// for showing image name
 	property string imageFileName
 
-	/* for showing image dimensions */
+	// for showing image dimensions
 	property int imageWidth
 	property int imageHeight
 
-	/* for showing mouse position */
+	// for showing mouse position
 	property real mouseX: -1
 	property real mouseY: -1
 

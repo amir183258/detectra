@@ -17,7 +17,7 @@ Frame {
 		return path.split("/").pop()
 	}
 
-	/* signal for mouse position and movement */
+	// signal for mouse position and movement
 	signal mouseMoved(real x, real y)
 
 	Layout.fillWidth: true
@@ -25,7 +25,7 @@ Frame {
 
 	clip: true
 
-	/* image component for showing image */
+	// image component for showing image
 	property real zoom: 1.0
 
 	property real offsetX: 0
@@ -44,25 +44,25 @@ Frame {
 		startY = 0
 	}
 
-	/* this function takes coordinates of screen and converts them to
-	 * the loaded image coordinate system. */
+	// this function takes coordinates of screen and converts them to
+	// the loaded image coordinate system.
 	function screenToImage(x, y) {
 		if (imageViewerId.status !== Image.Ready)
 			return null
 
-		/* these are actual image width and height */
+		// these are actual image width and height
 		let actualImageWidth = imageViewerId.paintedWidth
 		let actualImageHeight = imageViewerId.paintedHeight
 
-		/* these are image width and height after applying zoom */
+		// these are image width and height after applying zoom
 		let scaledWidth = actualImageWidth * zoom
 		let scaledHeight = actualImageHeight * zoom
 
-		/* the origin is top left corner of image */
+		// the origin is top left corner of image
 		let x0 = (mouseAreaId.width - scaledWidth) / 2
 		let y0 = (mouseAreaId.height - scaledHeight) / 2
 
-		/* final image coordinages */
+		// final image coordinages
 		let imgX = (x - x0 - offsetX) / zoom
 		let imgY = (y - y0 - offsetY) / zoom
 
@@ -106,7 +106,7 @@ Frame {
 			if (!p)
 				return
 
-			/* these are actual image width and height */
+			// these are actual image width and height
 			let actualImageWidth = imageViewerId.paintedWidth
 			let actualImageHeight = imageViewerId.paintedHeight
 			if (p.x < 0 || p.y < 0 || p.x > actualImageWidth || p.y > actualImageHeight)
@@ -146,13 +146,13 @@ Frame {
 		}
 	}
 
-	/* place holder text */
+	// place holder text
 	PlaceholderText {
 		imageStatus: imageViewerId.status
 		dragActive: imageDropAreaId.dragActive
 	}
 
-	/* image drop area */
+	// image drop area
 	ImageDropArea {
 		id: imageDropAreaId
 		anchors.fill: parent
