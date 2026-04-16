@@ -3,6 +3,7 @@
 
 #include <QString>
 #include <QStringList>
+#include <QMetaType>
 
 struct ModelInfo {
 	QString model_name;
@@ -14,7 +15,7 @@ struct ModelInfo {
 	int num_classes;
 	QStringList class_names;
 
-	/* default constructor */
+	// default constructor
 	ModelInfo():
 		file_size {0},
 		input_width {0},
@@ -23,5 +24,7 @@ struct ModelInfo {
 	{
 	}
 };
+
+Q_DECLARE_METATYPE(ModelInfo);
 
 #endif
