@@ -5,7 +5,7 @@
 int main(int argc, char *argv[]) {
 	QGuiApplication app(argc, argv);
 
-	/* load the style */
+	// load the style
 	QQuickStyle::setStyle("Universal");
 
 	qputenv("QT_QUICK_CONTROLS_UNIVERSAL_THEME", "Dark");
