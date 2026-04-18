@@ -2,6 +2,8 @@
 #include <QQmlApplicationEngine>
 #include <QQuickStyle>
 
+#include "controllers/register_controllers.hpp"
+
 int main(int argc, char *argv[]) {
 	QGuiApplication app(argc, argv);
 
@@ -10,6 +12,9 @@ int main(int argc, char *argv[]) {
 
 	qputenv("QT_QUICK_CONTROLS_UNIVERSAL_THEME", "Dark");
 	qputenv("QT_QUICK_CONTROLS_UNIVERSAL_ACCENT", "Blue");
+
+	// register types
+	register_controllers();
 
 	QQmlApplicationEngine engine;
 
