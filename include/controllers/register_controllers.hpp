@@ -1,0 +1,6 @@
+#ifndef CONTROLLERS_REGISTER_CONTROLLERS_HPP
+#define CONTROLLERS_REGISTER_CONTROLLERS_HPP
+
+void register_controllers();
+
+#endif
