@@ -8,6 +8,8 @@ target_include_directories(detector PRIVATE
 )
 
 target_link_libraries(detector PRIVATE
+	backend_engine
+
 	Qt6::Quick
 	Qt6::QuickControls2
 	DetectorUILibplugin
