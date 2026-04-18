@@ -4,6 +4,8 @@ import QtQuick.Layouts
 
 import DetectorUI.components
 
+import BackendEngine
+
 ApplicationWindow {
 	id: rootId
 
@@ -36,6 +38,7 @@ ApplicationWindow {
 	// detection actions
 	DetectionActions {
 		id: detectionActionsId
+		objectDetectorController: controllerId
 	}
 
 	menuBar: MainMenuBar {
@@ -55,7 +58,9 @@ ApplicationWindow {
 			Layout.fillWidth: true
 			Layout.fillHeight: true
 
-			LeftPanel {}
+			LeftPanel {
+				objectDetectorController: controllerId
+			}
 
 			CenterViewer {
 				id: centerViewerId
@@ -80,5 +85,10 @@ ApplicationWindow {
 			imageWidth: centerViewerId.imageWidth
 			imageHeight: centerViewerId.imageHeight
 		}
+	}
+
+	// backend
+	ObjectDetectorController {
+		id: controllerId
 	}
 }

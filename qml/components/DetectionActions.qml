@@ -3,6 +3,7 @@ import QtQuick.Controls
 import QtQuick.Dialogs
 
 Item {
+	property var objectDetectorController
 	// actions
 	property alias loadDetectorModelAction: loadDetectorModelId
 
@@ -11,7 +12,9 @@ Item {
 		title: "Select a Detection Model"
 		nameFilters: ["PyTorch Model (*.pt)"] // TODO this should be corrected to onnx models
 		onAccepted: {
-			console.log("Selected model: ", selectedFile)
+			objectDetectorController.loadModel(selectedFile)
+			console.log("controller loaded!") // TODO for test
+			console.log(objectDetectorController.modelInfo.modelName)
 		}
 	}
 
