@@ -12,6 +12,8 @@
 
 class ObjectDetectorController: public QObject {
 	Q_OBJECT
+
+	Q_PROPERTY(QVariantMap modelInfo READ getModelInfo NOTIFY modelInfoChanged)
 private:
 	std::unique_ptr<ObjectDetector> detector;
 
@@ -24,7 +26,10 @@ public:
 	
 	Q_INVOKABLE QVariantList runOnImage(const QImage &img);
 
-	Q_INVOKABLE QVariantMap getModelInfo() const;
+	QVariantMap getModelInfo() const;
+
+signals:
+	void modelInfoChanged();
 
 };
 

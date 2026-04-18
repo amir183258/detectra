@@ -11,14 +11,25 @@
 #include "core/detector_box.hpp"
 #include "core/model_info.hpp"
 
+// TODO this is mock
+#include "mock_object_detector.hpp"
+
 ObjectDetectorController::ObjectDetectorController(QObject *parent, std::unique_ptr<ObjectDetector> d):
 	QObject {parent},
 	detector {std::move(d)}
 {
+	// TODO this is mock and should be changed
+	detector = std::make_unique<MockObjectDetector>();
 }
 
 bool ObjectDetectorController::loadModel(const QString &path) {
-	return detector->load_model(path);
+	bool model_loaded = detector->load_model(path);
+	
+	if (model_loaded) {
+		emit modelInfoChanged();
+		return true;
+	}
+	return false;
 }
 
 bool ObjectDetectorController::isReady() const {
