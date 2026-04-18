@@ -2,8 +2,6 @@ qt_add_executable(qml_tests
 	main.cpp
 )
 
-target_link_libraries(qml_tests PRIVATE Qt6::QuickTest)
-
 qt_add_qml_module(qml_tests
 	URI DetectorTests
 	QML_FILES
@@ -18,4 +16,4 @@ qt_add_qml_module(qml_tests
 		CenterViewer/tst_CenterViewer.qml
 )
 
-target_link_libraries(qml_tests PRIVATE DetectorUILibplugin)
+target_link_libraries(qml_tests PRIVATE Qt6::QuickTest DetectorUILibplugin backend_engine)
