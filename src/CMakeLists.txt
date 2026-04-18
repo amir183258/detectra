@@ -1,6 +1,7 @@
 add_library(backend_engine
 	controllers/object_detector_controller.cpp
 	controllers/register_controllers.cpp
+	core/detector_box_file_manager.cpp
 
 	${CMAKE_SOURCE_DIR}/include/controllers/object_detector_controller.hpp
 )
