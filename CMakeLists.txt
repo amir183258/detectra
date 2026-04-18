@@ -15,7 +15,7 @@ find_package(GTest REQUIRED)
 # Qt6
 set(CMAKE_PREFIX_PATH "$ENV{HOME}/Qt/6.10.1/gcc_64")
 
-find_package(Qt6 COMPONENTS Quick QuickControls2 QuickTest Core Gui REQUIRED)
+find_package(Qt6 COMPONENTS Quick QuickControls2 QuickTest Qml Core Gui REQUIRED)
 
 qt_standard_project_setup()
 
