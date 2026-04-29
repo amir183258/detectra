@@ -5,6 +5,7 @@ add_executable(tests_backend
 	core/test_detector_box_file_manager.cpp
 
 	controllers/test_object_detector_controller.cpp
+	controllers/test_detector_box_file_manager_controller.cpp
 )
 
 target_include_directories(tests_backend
