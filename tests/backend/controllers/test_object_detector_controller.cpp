@@ -1,9 +1,10 @@
 #include <memory>
 
+#include <gtest/gtest.h>
+
 #include <QVariant>
 #include <QString>
 #include <QImage>
-#include <gtest/gtest.h>
 
 #include "controllers/object_detector_controller.hpp"
 #include "mock_object_detector.hpp"
