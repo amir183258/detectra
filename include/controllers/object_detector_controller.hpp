@@ -25,7 +25,7 @@ public:
 
 	Q_INVOKABLE bool isReady() const;
 	
-	Q_INVOKABLE QVariantList runOnImage(const QImage &img);
+	Q_INVOKABLE QVariantList runOnImage(const QString &img_path);
 
 	QVariantMap getModelInfo() const;
 

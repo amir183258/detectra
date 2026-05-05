@@ -39,20 +39,29 @@ bool ObjectDetectorController::isReady() const {
 	return detector->is_ready();
 }
 
-QVariantList ObjectDetectorController::runOnImage(const QImage &img) {
+QVariantList ObjectDetectorController::runOnImage(const QString &img_path) {
+	// first read the image
+	// TODO handle the case that image is null
+	QImage img(img_path);
+
 	QVariantList out;
 
 	QVector<DetectorBox> boxes = detector->run(img);
 	for (const DetectorBox &b: boxes) {
 		QVariantMap m;
-		m["classId"] = b.class_id;
+		m["class_id"] = b.class_id;
 		m["label"] = b.label;
 		m["confidence"] = b.confidence;
+
 		m["x"] = b.box_rect.x();
 		m["y"] = b.box_rect.y();
-		m["w"] = b.box_rect.width();
-		m["h"] = b.box_rect.height();
-		m["color"] = b.color.name();
+		m["width"] = b.box_rect.width();
+		m["height"] = b.box_rect.height();
+
+		m["red"] = b.color.red();
+		m["green"] = b.color.green();
+		m["blue"] = b.color.blue();
+		m["alpha"] = b.color.alpha();
 
 		out.push_back(m);
 	}
