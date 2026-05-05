@@ -22,7 +22,7 @@ Item {
 		anchors.fill: parent
 
 		CheckBox {
-			checked: check_box_visible
+			checked: model.check_box_visible
 
 			onCheckedChanged: {
 				model.check_box_visible = checked

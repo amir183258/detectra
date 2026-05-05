@@ -19,7 +19,7 @@ Item {
 // -------------------------------------------------------
 // Main
 // -------------------------------------------------------
-	ListView {
+	Repeater {
 		anchors.fill: parent
 		// only render when image is ready
 		visible: centerViewer.mainImage.status === Image.Ready

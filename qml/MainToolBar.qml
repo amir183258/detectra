@@ -39,6 +39,11 @@ ToolBar {
 			action: boxManagerActions.loadDetectorBoxesAction
 		}
 
+		// apply the detector model on the image in center viewer
+		ToolButton {
+			action: detectionActions.applyDetectorModelAction
+		}
+
 		//
 		//
 		//

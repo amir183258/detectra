@@ -15,12 +15,11 @@ Item {
 	property var image_pos_x: (centerViewer.width - centerViewer.mainImage.paintedWidth * centerViewer.zoom)  / 2
 	property var image_pos_y: (centerViewer.height - centerViewer.mainImage.paintedHeight * centerViewer.zoom) / 2
 
-	visible: model.check_box_visible
 // -------------------------------------------------------
 // Main
 // -------------------------------------------------------
-	width: ListView.view.width
-	height: ListView.view.height
+	anchors.fill: parent
+	visible: model.check_box_visible
 
 	Repeater {
 		model: detector_boxes

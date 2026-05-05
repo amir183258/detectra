@@ -48,6 +48,8 @@ ApplicationWindow {
 
 		// inputs
 		objectDetectorController: objectDetectorModelControllerId
+		centerViewer: centerViewerId
+		leftPanel: leftPanelId
 	}
 
 	// file manager actions

@@ -61,5 +61,9 @@ MenuBar {
 		MenuItem {
 			action: detectionActions.loadDetectorModelAction
 		}
+
+		MenuItem {
+			action: detectionActions.applyDetectorModelAction
+		}
 	}
 }
