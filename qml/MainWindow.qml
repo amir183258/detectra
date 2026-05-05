@@ -2,11 +2,14 @@ import QtQuick
 import QtQuick.Controls
 import QtQuick.Layouts
 
-import DetectorUI.components
+import DetectorUI
 
 import BackendEngine
 
 ApplicationWindow {
+// -------------------------------------------------------
+// Initial Window 
+// -------------------------------------------------------
 	id: rootId
 
 	title: "Detector"
@@ -27,28 +30,50 @@ ApplicationWindow {
 		y = (screen.height - height) / 2
 	}
 
+// -------------------------------------------------------
+// Actions
+// -------------------------------------------------------
 	// image actions
 	ImageActions {
 		id: imageActionsId
 		objectName: "imageActionsObject"
 
+		// inputs
 		imageViewer: centerViewerId
 	}
 
-	// detection actions
-	DetectionActions {
-		id: detectionActionsId
-		objectDetectorController: controllerId
+	// detector actions
+	DetectorModelActions {
+		id: detectorModelActionsId
+
+		// inputs
+		objectDetectorController: objectDetectorModelControllerId
 	}
 
+	// file manager actions
+	DetectorBoxesFileManagerActions {
+		id: detectorBoxesFileManagerActionsId
+
+		// inputs
+		boxManagerController: detectorBoxesFileManagerControllerId
+		leftPanel: leftPanelId
+	}
+
+// -------------------------------------------------------
+// Main
+// -------------------------------------------------------
 	menuBar: MainMenuBar {
+		// inputs
 		imageActions: imageActionsId
-		detectionActions: detectionActionsId
+		detectionActions: detectorModelActionsId
+		boxManagerActions: detectorBoxesFileManagerActionsId
 	}
 
 	header: MainToolBar {
+		// inputs
 		imageActions: imageActionsId
-		detectionActions: detectionActionsId
+		detectionActions: detectorModelActionsId
+		boxManagerActions: detectorBoxesFileManagerActionsId
 	}
 
 	ColumnLayout {
@@ -59,36 +84,39 @@ ApplicationWindow {
 			Layout.fillHeight: true
 
 			LeftPanel {
-				objectDetectorController: controllerId
+				id: leftPanelId
+
+				// inputs
+				objectDetectorController: objectDetectorModelControllerId
 			}
 
 			CenterViewer {
 				id: centerViewerId
 				objectName: "centerViewerObject"
 
-				onMouseMoved: function(x, y) {
-					bottomPanelId.mouseX = x
-					bottomPanelId.mouseY = y
-				}
+				// inputs
+				detectorBoxesListModel: leftPanelId.detectorBoxesListModel
 			}
-
-			// don't need right panel right now
-			// RightPanel {}
 		}
 
 		BottomPanel {
 			id: bottomPanelId
 			objectName: "bottomPanelObject"
 
-			imageFileName: centerViewerId.imageFileName
-
-			imageWidth: centerViewerId.imageWidth
-			imageHeight: centerViewerId.imageHeight
+			// inputs
+			centerViewer: centerViewerId
 		}
 	}
 
-	// backend
+// -------------------------------------------------------
+// Backend
+// -------------------------------------------------------
+	// backend controllers
 	ObjectDetectorController {
-		id: controllerId
+		id: objectDetectorModelControllerId
+	}
+
+	DetectorBoxFileManagerController {
+		id: detectorBoxesFileManagerControllerId
 	}
 }

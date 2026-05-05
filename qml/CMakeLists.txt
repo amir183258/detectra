@@ -12,14 +12,20 @@ qt_add_qml_module(${LIB_NAME}
 
 	QML_FILES
 		MainWindow.qml
-		components/MainToolBar.qml
-		components/MainMenuBar.qml
-		components/LeftPanel.qml
-		components/RightPanel.qml
-		components/BottomPanel.qml
-		components/DetectionActions.qml
-		components/CenterViewer/CenterViewer.qml
-		components/CenterViewer/ImageDropArea.qml
-		components/CenterViewer/PlaceholderText.qml
-		components/CenterViewer/ImageActions.qml
+
+		MainMenuBar.qml
+		MainToolBar.qml
+		LeftPanel.qml
+		CenterViewer/CenterViewer.qml
+		CenterViewer/ImageDropArea.qml
+		CenterViewer/PlaceholderText.qml
+		CenterViewer/DetectorBoxes.qml
+		BottomPanel.qml
+
+		actions/ImageActions.qml
+		actions/DetectorModelActions.qml
+		actions/DetectorBoxesFileManagerActions.qml
+
+		delegates/DetectorBoxesDelegate.qml
+		delegates/RenderDetectorBoxesDelegate.qml
 )

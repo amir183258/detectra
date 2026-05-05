@@ -3,20 +3,23 @@ import QtQuick.Controls
 import QtQuick.Dialogs
 
 Item {
+// -------------------------------------------------------
+// Output Properties
+// -------------------------------------------------------
 	property bool dragActive: dropAreaId.containsDrag
 
 	// for test
 	property alias dropArea: dropAreaId
 	property alias errorDialog: errorDialogId
 
-	signal imageDropped(url fileUrl)
+// -------------------------------------------------------
+// Input Properties
+// -------------------------------------------------------
+	property var centerViewer
 
-	// message dialog for invalid files in drop area
-	MessageDialog {
-		id: errorDialogId
-		title: "Invalid File"
-	}
-
+// -------------------------------------------------------
+// Functions
+// -------------------------------------------------------
 	// function that check if file is image or not
 	function isImageFile(url) {
 		let path = url.toString().toLowerCase()
@@ -25,6 +28,15 @@ Item {
 			path.endsWith(".gif") ||
 			path.endsWith(".bmp") ||
 			path.endsWith(".jpeg")
+	}
+
+// -------------------------------------------------------
+// Main
+// -------------------------------------------------------
+	// message dialog for invalid files in drop area
+	MessageDialog {
+		id: errorDialogId
+		title: "Invalid File"
 	}
 
 	// drop area for opening an image
@@ -50,7 +62,13 @@ Item {
 				return
 			}
 
-			imageDropped(fileUrl)
+			// set center viewer and reset pan and zoom
+			centerViewer.mainImage.source = fileUrl
+
+			centerViewer.zoom = 1.0
+			centerViewer.offsetX = 0
+			centerViewer.offsetY = 0
+
 			drop.acceptProposedAction()
 		}
 

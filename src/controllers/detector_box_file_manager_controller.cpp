@@ -2,6 +2,7 @@
 #include <QString>
 #include <QVariant>
 #include <QVector>
+#include <QUrl>
 
 #include "controllers/detector_box_file_manager_controller.hpp"
 #include "core/detector_box_file_manager.hpp"
@@ -15,6 +16,11 @@ DetectorBoxFileManagerController::DetectorBoxFileManagerController(QObject *pare
 
 // qml should make a qvariantlist of qvariantmaps, we have to turn them to detector boxes
 bool DetectorBoxFileManagerController::saveBoxes(const QString &file_path, const QVariantList &boxes) {
+	// we have to correct import path from qml
+	QString path = file_path;
+	if (path.startsWith("file://"))
+		path = QUrl(file_path).toLocalFile();
+
 	QVector<DetectorBox> output_boxes;
 
 	for (const QVariant &var: boxes) {
@@ -44,11 +50,16 @@ bool DetectorBoxFileManagerController::saveBoxes(const QString &file_path, const
 		output_boxes.append(box);
 	}
 
-	return file_manager->save_boxes_to_file(file_path, output_boxes);
+	return file_manager->save_boxes_to_file(path, output_boxes);
 }
 
 QVariantList DetectorBoxFileManagerController::loadBoxes(const QString &file_path) {
-	QVector<DetectorBox> boxes = file_manager->load_boxes_from_file(file_path);
+	// we have to correct import path from qml
+	QString path = file_path;
+	if (path.startsWith("file://"))
+		path = QUrl(file_path).toLocalFile();
+
+	QVector<DetectorBox> boxes = file_manager->load_boxes_from_file(path);
 
 	QVariantList list;
 	for (const DetectorBox &box: boxes) {

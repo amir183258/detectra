@@ -14,6 +14,7 @@ class ObjectDetectorController: public QObject {
 	Q_OBJECT
 
 	Q_PROPERTY(QVariantMap modelInfo READ getModelInfo NOTIFY modelInfoChanged)
+	Q_PROPERTY(bool ready READ isReady NOTIFY modelInfoChanged)
 private:
 	std::unique_ptr<ObjectDetector> detector;
 
