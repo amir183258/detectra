@@ -33,23 +33,28 @@ TEST(ObjectDetectorControllerTest, RunReturnBoxes) {
 	controller.loadModel("dummy");
 
 	// now run model on an image
-	QImage fake_image(640, 480, QImage::Format_RGB888);
+	QString fake_path = "";
 
-	QVariantList results = controller.runOnImage(fake_image);
+	QVariantList results = controller.runOnImage(fake_path);
 
 	// there are 2 boxes in mock
 	ASSERT_EQ(results.size(), 2);
 
 	QVariantMap out_map = results[0].toMap();
 
-	EXPECT_EQ(out_map["classId"].toInt(), 0);
+	EXPECT_EQ(out_map["class_id"].toInt(), 0);
 	EXPECT_EQ(out_map["label"].toString(), "person");
 	EXPECT_EQ(out_map["confidence"].toFloat(), 0.95f);
+
 	EXPECT_EQ(out_map["x"].toInt(), 50);
 	EXPECT_EQ(out_map["y"].toInt(), 50);
-	EXPECT_EQ(out_map["w"].toInt(), 200);
-	EXPECT_EQ(out_map["h"].toInt(), 400);
-	EXPECT_EQ(out_map["color"].toString(), QString("#ffff00"));
+	EXPECT_EQ(out_map["width"].toInt(), 200);
+	EXPECT_EQ(out_map["height"].toInt(), 400);
+
+	EXPECT_EQ(out_map["red"], 255);
+	EXPECT_EQ(out_map["green"], 255);
+	EXPECT_EQ(out_map["blue"], 0);
+	EXPECT_EQ(out_map["alpha"], 255);
 }
 
 TEST(ObjectDetectorControllerTest, ModelInformation) {
