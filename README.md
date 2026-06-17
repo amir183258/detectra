@@ -1,4 +1,4 @@
-# InferView
+# Detectra
 
 A lightweight desktop tool for visualizing object detection results.
 
