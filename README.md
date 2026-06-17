@@ -1,5 +1,7 @@
 # Detectra
 
+![Detectra screenshot](screenshot.png)
+
 A lightweight desktop tool for visualizing object detection results.
 
 InferView is built with **C++ and Qt/QML** and allows users to load images, run object detection models, and interactively explore the results.
